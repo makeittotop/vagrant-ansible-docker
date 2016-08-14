@@ -15,6 +15,23 @@ Vagrant.configure(2) do |config|
 
   config.vm.box = "ubuntu/trusty64"
 
+  config.vm.provision "bootstrap-ansible", type: "shell", preserve_order: true do |s|
+    s.inline = "echo '*** Update Ansible Repo ***'"
+    s.inline = "apt-get install -y software-properties-common"
+    s.inline = "apt-add-repository ppa:ansible/ansible"
+    s.inline = "apt-get -y update"
+  end
+
+  config.vm.provision "install-ansible", type: "shell", preserve_order: true do |s|
+    s.inline = "echo '*** Install Ansible ***'"
+    s.inline = "apt-get -y install ansible"
+  end
+
+  config.vm.provision "install-ansible-roles", type: "shell", preserve_order: true do |s|
+    s.inline = "echo '*** Install Ansible Roles ***'"
+    s.inline = "ansible-galaxy install jeqo.nginx"
+  end
+
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "playbook.yml"
