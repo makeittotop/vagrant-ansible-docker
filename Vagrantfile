@@ -12,7 +12,7 @@ echo '*** Install Ansible ***'
 apt-get install -y python-pip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev zlib1g-dev
 pip install markupsafe ansible
 echo '*** Install Ansible Roles ***'
-ansible-galaxy install makeittotop.apache2 jeqo.nginx stevenharradine.apache2
+ansible-galaxy install angstwad.docker_ubuntu makeittotop.apache2 jeqo.nginx stevenharradine.apache2
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
