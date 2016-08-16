@@ -1,1 +1,2 @@
 README
+# vagrant-ansible-docker
