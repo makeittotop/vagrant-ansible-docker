@@ -1,4 +1,6 @@
 ---
 - hosts: all
   roles:
-     - jeqo.nginx
+     #- jeqo.nginx
+     - { role: makeittotop.apache2,  become: yes }
+     #- stevenharradine.apache2
