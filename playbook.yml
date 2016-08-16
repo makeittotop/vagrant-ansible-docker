@@ -6,3 +6,16 @@
      #- stevenharradine.apache2
      #- { role: lciolecki.virtualenvwrapper,  become: yes }
      - { role: angstwad.docker_ubuntu,  become: yes }
+  tasks:
+    - name: Download an image and run a docker container with it
+      docker:
+        name: my-flask-app
+        image: p0bailey/docker-flask
+        expose:
+        - 80
+        pull: missing
+        state: started
+        ports:
+        - 80:80
+      become: yes
+      become_method: sudo
